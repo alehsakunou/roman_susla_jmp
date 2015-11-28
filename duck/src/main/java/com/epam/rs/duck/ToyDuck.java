@@ -6,65 +6,61 @@ import com.epam.rs.logistics.Zone;
 /**
  * Created by Raman_Susla1 on 11/25/2015.
  */
-public class ToyDuck extends Duck
-{
+public class ToyDuck extends Duck {
     private static final double STEP_SIZE = 0.5;
 
-    public ToyDuck(Zone zone)
-    {
+    public ToyDuck(Zone zone) {
         super(zone);
     }
 
-    public void flitter() { logger.info("I flit"); }
+    public void flitter() {
+        logger.info("Flit");
+    }
 
     private boolean isOn = true;
 
     @Override
-    public void walk()
-    {
+    public void walk() {
         super.walk();
         flitter();
     }
 
 
     @Override
-    public void charge(){
+    public void charge() {
         super.charge();
         isOn = true;
     }
 
     @Override
-    protected double getStepSize() { return STEP_SIZE; }
+    protected double getStepSize() {
+        return STEP_SIZE;
+    }
 
     @Override
-    protected void howToOvercome()
-    {
+    protected void howToOvercome() {
         Zone zone = getZone();
-        if(isOn){
-            if(zone.equals(Zone.FLATLAND))
-            {
+        if (isOn) {
+            if (zone.equals(Zone.FLATLAND) || zone.equals(Zone.START) || zone.equals(Zone.FINISH)) {
                 walk();
                 return;
             }
-            if(zone.equals(Zone.WATER))
-            {
+            if (zone.equals(Zone.WATER)) {
                 swim();
             }
         }
     }
 
     @Override
-    protected Reaction getAvailability(Zone zone)
-    {
-        if (isHungry())
-        {
-            if(isOn){
+    protected Reaction getAvailability(Zone zone) {
+        if (isHungry()) {
+            if (isOn) {
                 for (int i = 0; i < 5; i++) quack();
                 isOn = false;
             }
             return Reaction.WAIT;
         }
-        if(zone.equals(Zone.WALL))
+        if (zone.equals(Zone.WALL))
             return Reaction.CAN_NOT;
         return Reaction.CAN;
     }

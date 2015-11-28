@@ -1,7 +1,7 @@
 package com.epam.rs;
 
 import com.epam.rs.duck.Duck;
-import com.epam.rs.duck.LiveDuck;
+import com.epam.rs.duck.ToyDuck;
 import com.epam.rs.logistics.Direction;
 import com.epam.rs.logistics.Zone;
 import com.epam.rs.util.Utils;
@@ -20,9 +20,9 @@ public class Main
     {
         try
         {
-            char[][] areaMap = Utils.readAreaMap(Main.class.getClassLoader().getResource("default.map").getFile());
-            Utils.outputAreaMap(areaMap, -1, -1);
-            Duck duck = new LiveDuck(Zone.FLATLAND);
+            Zone[][] areaMap = Utils.readAreaMap(Main.class.getClassLoader().getResource("default.map").getFile());
+            Utils.outputAreaMap(areaMap, 5, 5);
+            Duck duck = new ToyDuck(Zone.FLATLAND);
             duck.tryAction(Direction.DOWN, Zone.FLATLAND);
             duck.tryAction(Direction.DOWN, Zone.FLATLAND);
             duck.tryAction(Direction.DOWN, Zone.FLATLAND);

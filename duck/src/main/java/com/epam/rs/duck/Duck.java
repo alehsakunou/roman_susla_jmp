@@ -8,12 +8,9 @@ import org.apache.log4j.Logger;
 /**
  * Created by Raman_Susla1 on 11/25/2015.
  */
-public abstract class Duck
-{
-    public Duck(Zone zone)
-    {
-        if (zone == null || zone.equals(Zone.WALL))
-        {
+public abstract class Duck {
+    public Duck(Zone zone) {
+        if (zone == null || zone.equals(Zone.WALL)) {
             throw new RuntimeException("Bad place to start quest");
         }
         this.zone = zone;
@@ -28,64 +25,52 @@ public abstract class Duck
     private Direction direction;
 
 
-    public Zone getZone()
-    {
+    public Zone getZone() {
         return zone;
     }
 
     protected Zone zone;
 
-    protected final void swim()
-    {
-        logger.info("I swim!");
+    protected final void swim() {
+        logger.info("Swim!");
     }
 
-    protected void walk()
-    {
-        logger.info("I walk!");
+    protected void walk() {
+        logger.info("Walk!");
     }
 
-    protected final void quack()
-    {
-        logger.info("I quack!");
+    protected final void quack() {
+        logger.info("Quack!");
     }
 
-    protected void sayHungry()
-    {
+    protected void sayHungry() {
         logger.info("I'm hungry! Feed me!");
     }
 
-    public void charge()
-    {
+    public void charge() {
         timeFromLastCharge = 0;
     }
 
-    protected boolean isHungry()
-    {
+    protected boolean isHungry() {
         return timeFromLastCharge == STEPS_TO_HUNGRY;
     }
 
 
-    public Reaction tryAction(Direction direction, Zone zone)
-    {
+    public Reaction tryAction(Direction direction, Zone zone) {
 
         Reaction reaction = getAvailability(zone);
-        if (!Reaction.CAN.equals(reaction))
-        {
+        if (!Reaction.CAN.equals(reaction)) {
             return reaction;
         }
         final boolean canMove = move(direction);
-        if (canMove)
-        {
+        if (canMove) {
             this.zone = zone;
         }
         howToOvercome();
-        if (timeFromLastCharge < STEPS_TO_HUNGRY)
-        {
+        if (timeFromLastCharge < STEPS_TO_HUNGRY) {
             timeFromLastCharge++;
         }
-        if (isHungry())
-        {
+        if (isHungry()) {
             sayHungry();
         }
         return canMove ? Reaction.CAN : Reaction.WAIT;
@@ -93,8 +78,7 @@ public abstract class Duck
     }
 
 
-    protected boolean move(Direction direction)
-    {
+    protected boolean move(Direction direction) {
         stepValue = this.direction == null || direction.equals(this.direction) ? getStepSize() : stepValue + getStepSize();
         this.direction = direction;
         return RED_LINE_TO_MOVE <= stepValue;
