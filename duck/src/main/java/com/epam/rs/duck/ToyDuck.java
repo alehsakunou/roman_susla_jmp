@@ -1,6 +1,5 @@
 package com.epam.rs.duck;
 
-import com.epam.rs.logistics.Direction;
 import com.epam.rs.logistics.Reaction;
 import com.epam.rs.logistics.Zone;
 
@@ -38,8 +37,9 @@ public class ToyDuck extends Duck
     protected double getStepSize() { return STEP_SIZE; }
 
     @Override
-    protected void howToOvercome(Zone zone)
+    protected void howToOvercome()
     {
+        Zone zone = getZone();
         if(isOn){
             if(zone.equals(Zone.FLATLAND))
             {

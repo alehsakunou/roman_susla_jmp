@@ -1,6 +1,5 @@
 package com.epam.rs.duck;
 
-import com.epam.rs.logistics.Direction;
 import com.epam.rs.logistics.Reaction;
 import com.epam.rs.logistics.Zone;
 
@@ -16,24 +15,30 @@ public class LiveDuck extends Duck
         super(zone);
     }
 
-    public void fly() { logger.info("I fly!"); }
-
-
-
-    @Override
-    protected double getStepSize() { return STEP_SIZE; }
-
-    @Override
-    protected void howToOvercome(Zone zone)
+    public void fly()
     {
+        logger.info("I fly!");
+    }
+
+
+    @Override
+    protected double getStepSize()
+    {
+        return STEP_SIZE;
+    }
+
+    @Override
+    protected void howToOvercome()
+    {
+        Zone zone = getZone();
         if (isHungry())
         {
-            if(zone.equals(Zone.FLATLAND))
+            if (zone.equals(Zone.FLATLAND))
             {
                 walk();
                 return;
             }
-            if(zone.equals(Zone.WATER))
+            if (zone.equals(Zone.WATER))
             {
                 swim();
                 return;
@@ -45,8 +50,6 @@ public class LiveDuck extends Duck
     @Override
     protected Reaction getAvailability(Zone zone)
     {
-        if(zone.equals(Zone.WALL))
-            return Reaction.CAN_NOT;
-        return Reaction.CAN;
+        return zone.equals(Zone.WALL) ? Reaction.CAN_NOT : Reaction.CAN;
     }
 }
