@@ -10,6 +10,14 @@ import org.apache.log4j.Logger;
  */
 public abstract class Duck
 {
+    public Duck(Zone zone)
+    {
+        if(zone==null || zone.equals(Zone.WALL))
+        {
+            throw new RuntimeException("Bad place to start quest");
+        }
+        this.zone = zone;
+    }
     protected final Logger logger = Logger.getLogger(getClass());
     protected static final int STEPS_TO_HUNGRY = 10;
     protected static final double RED_LINE_TO_MOVE = 1;

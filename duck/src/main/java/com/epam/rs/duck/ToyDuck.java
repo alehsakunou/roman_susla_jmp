@@ -11,6 +11,11 @@ public class ToyDuck extends Duck
 {
     private static final double STEP_SIZE = 0.5;
 
+    public ToyDuck(Zone zone)
+    {
+        super(zone);
+    }
+
     public void flitter() { logger.info("I flit"); }
 
     private boolean isOn = true;

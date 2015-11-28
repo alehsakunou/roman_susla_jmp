@@ -10,6 +10,12 @@ import com.epam.rs.logistics.Zone;
 public class LiveDuck extends Duck
 {
     private static final double STEP_SIZE = 1;
+
+    public LiveDuck(Zone zone)
+    {
+        super(zone);
+    }
+
     public void fly() { logger.info("I fly!"); }
 
 
