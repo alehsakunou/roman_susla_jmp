@@ -8,28 +8,35 @@ import com.epam.rs.logistics.Zone;
  */
 public class ToyDuck extends Duck {
     private static final double STEP_SIZE = 0.5;
+    private boolean isOn = true;
 
     public ToyDuck(Zone zone) {
         super(zone);
     }
 
+    /**
+     * wing swing
+     */
     public void flitter() {
         logger.info("Flit");
     }
 
-    private boolean isOn = true;
-
+    /**
+     * walk and flit
+     */
     @Override
     public void walk() {
         super.walk();
         flitter();
     }
 
-
+    /**
+     * Change battery!
+     */
     @Override
     public void charge() {
-        super.charge();
         isOn = true;
+        logger.info("Change battery!");
     }
 
     @Override
@@ -53,6 +60,8 @@ public class ToyDuck extends Duck {
 
     @Override
     protected Reaction getAvailability(Zone zone) {
+        if (isOn && zone.equals(Zone.WALL))
+            return Reaction.IMPOSSIBLE;
         if (isHungry()) {
             if (isOn) {
                 for (int i = 0; i < 5; i++) quack();
@@ -60,8 +69,6 @@ public class ToyDuck extends Duck {
             }
             return Reaction.WAIT;
         }
-        if (zone.equals(Zone.WALL))
-            return Reaction.CAN_NOT;
-        return Reaction.CAN;
+        return Reaction.GO;
     }
 }
