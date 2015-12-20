@@ -1,6 +1,6 @@
-package com.epam.rs.decorator.impl;
+package com.epam.rs.patterns.decorator.impl;
 
-import com.epam.rs.decorator.StyledButtonDecorator;
+import com.epam.rs.patterns.decorator.StyledButtonDecorator;
 
 import javax.swing.*;
 import java.awt.*;

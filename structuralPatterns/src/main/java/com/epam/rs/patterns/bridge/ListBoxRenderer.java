@@ -1,4 +1,4 @@
-package com.epam.rs.bridge;
+package com.epam.rs.patterns.bridge;
 
 import com.epam.rs.data.Record;
 

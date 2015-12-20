@@ -1,4 +1,4 @@
-package com.epam.rs.decorator.facade;
+package com.epam.rs.patterns.facade;
 
 import java.util.List;
 

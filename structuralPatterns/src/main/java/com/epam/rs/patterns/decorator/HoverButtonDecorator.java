@@ -1,4 +1,4 @@
-package com.epam.rs.decorator;
+package com.epam.rs.patterns.decorator;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

@@ -1,6 +1,6 @@
-package com.epam.rs.decorator.impl;
+package com.epam.rs.patterns.decorator.impl;
 
-import com.epam.rs.decorator.HoverButtonDecorator;
+import com.epam.rs.patterns.decorator.HoverButtonDecorator;
 
 import javax.swing.*;
 import java.awt.*;

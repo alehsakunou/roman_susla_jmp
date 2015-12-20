@@ -1,13 +1,13 @@
 package com.epam.rs;
 
 
-import com.epam.rs.bridge.ListBoxRenderer;
-import com.epam.rs.bridge.Renderer;
-import com.epam.rs.bridge.TableRenderer;
+import com.epam.rs.patterns.bridge.ListBoxRenderer;
+import com.epam.rs.patterns.bridge.Renderer;
+import com.epam.rs.patterns.bridge.TableRenderer;
 import com.epam.rs.data.Record;
-import com.epam.rs.decorator.facade.Facade;
-import com.epam.rs.decorator.impl.GreenButton;
-import com.epam.rs.decorator.impl.OrangeHoverButton;
+import com.epam.rs.patterns.facade.Facade;
+import com.epam.rs.patterns.decorator.impl.GreenButton;
+import com.epam.rs.patterns.decorator.impl.OrangeHoverButton;
 
 import javax.swing.*;
 import java.awt.*;

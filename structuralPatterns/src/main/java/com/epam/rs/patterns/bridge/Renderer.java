@@ -1,4 +1,4 @@
-package com.epam.rs.bridge;
+package com.epam.rs.patterns.bridge;
 
 import javax.swing.*;
 import java.util.List;
