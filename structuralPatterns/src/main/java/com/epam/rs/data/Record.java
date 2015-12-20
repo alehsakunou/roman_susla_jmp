@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * Created by catmo_000 on 12/20/2015.
  */
-@XmlRootElement(name = "employee")
+@XmlRootElement(name = "record")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Record {
     private long id;
@@ -60,6 +60,6 @@ public class Record {
 
     @Override
     public String toString() {
-        return id + "." + uid;
+        return id +   "." + uid;
     }
 }

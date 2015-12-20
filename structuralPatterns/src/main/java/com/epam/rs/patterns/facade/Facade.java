@@ -8,7 +8,7 @@ import java.util.List;
  * Created by catmo_000 on 12/20/2015.
  */
 public class Facade {
-    private static final MemoryStore memoryStore = new MemoryStore();
+    private static final MemoryStore memoryStore = new MemoryStore(true);
     private static final XmlStore xmlStore = new XmlStore();
 
     public enum ConnectionType{

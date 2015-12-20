@@ -1,6 +1,8 @@
 package com.epam.rs;
 
 
+import com.epam.rs.patterns.adapter.ListAdapter;
+import com.epam.rs.patterns.adapter.MoveSupportedList;
 import com.epam.rs.patterns.bridge.ListBoxRenderer;
 import com.epam.rs.patterns.bridge.Renderer;
 import com.epam.rs.patterns.bridge.TableRenderer;
@@ -36,8 +38,9 @@ public class Main extends JFrame implements ActionListener {
         getContentPane().add(panel);
 
         //facade and bridge
-        java.util.List records = Facade.getAllRecords(Facade.ConnectionType.XML);
-        Renderer<Record>[] renderers = new Renderer[]{new ListBoxRenderer(records), new TableRenderer(records)};
+        java.util.List recordsXml = Facade.getAllRecords(Facade.ConnectionType.XML);
+        java.util.List recordsMem = Facade.getAllRecords(Facade.ConnectionType.MEMORY);
+        Renderer<Record>[] renderers = new Renderer[]{new ListBoxRenderer(recordsXml), new TableRenderer(recordsXml)};
         panel.add(renderers[0]);
         panel.add(renderers[1]);
 
@@ -45,6 +48,17 @@ public class Main extends JFrame implements ActionListener {
         quitButton = new JButton(QUIT);
         panel.add(new OrangeHoverButton(new GreenButton(quitButton)));
         quitButton.addActionListener(this);
+
+        //adapter
+
+        MoveSupportedList firstList = new MoveSupportedList(recordsXml);
+        MoveSupportedList secondList = new MoveSupportedList(recordsMem);
+        ListAdapter firstAdapter= new ListAdapter(firstList);
+        ListAdapter secondAdapter= new ListAdapter(secondList);
+        firstList.setAdapter(secondAdapter);
+        secondList.setAdapter(firstAdapter);
+        panel.add(firstList);
+        panel.add(secondList);
 
 
         setSize(new Dimension(500, 500));
