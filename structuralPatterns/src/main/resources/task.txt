@@ -1,0 +1,6 @@
+On the base of Adapter implement GUI for forming list of records, gives opportunity to move records from one list to another.
+On the base of Bridge implement GUI, presents list at ListBox and Table at the same time..
+[On the base of Composite implement hierarchical tree subordination facilities of binary relation part-whole.] - optional
+On the base of Decorator implement GUI, highlight buttons of the administration panel through moving the mouse cursor
+On the base of Facade implement class, organize the connection to database.
+On the base of Flyweight implement GUI in form of windows form with folders, shown objects
