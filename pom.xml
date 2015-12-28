@@ -11,6 +11,8 @@
     <modules>
         <module>duck</module>
         <module>structuralPatterns</module>
+        <module>classloaders</module>
+        <module>fakeFunc</module>
     </modules>
 
     <dependencies>

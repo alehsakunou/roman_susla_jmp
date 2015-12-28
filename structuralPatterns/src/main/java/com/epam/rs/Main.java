@@ -1,15 +1,15 @@
 package com.epam.rs;
 
 
+import com.epam.rs.data.Record;
 import com.epam.rs.patterns.adapter.ListAdapter;
 import com.epam.rs.patterns.adapter.MoveSupportedList;
 import com.epam.rs.patterns.bridge.ListBoxRenderer;
 import com.epam.rs.patterns.bridge.Renderer;
 import com.epam.rs.patterns.bridge.TableRenderer;
-import com.epam.rs.data.Record;
-import com.epam.rs.patterns.facade.Facade;
 import com.epam.rs.patterns.decorator.impl.GreenButton;
 import com.epam.rs.patterns.decorator.impl.OrangeHoverButton;
+import com.epam.rs.patterns.facade.Facade;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,7 +50,6 @@ public class Main extends JFrame implements ActionListener {
         quitButton.addActionListener(this);
 
         //adapter
-
         MoveSupportedList firstList = new MoveSupportedList(recordsXml);
         MoveSupportedList secondList = new MoveSupportedList(recordsMem);
         ListAdapter firstAdapter= new ListAdapter(firstList);
@@ -59,6 +58,9 @@ public class Main extends JFrame implements ActionListener {
         secondList.setAdapter(firstAdapter);
         panel.add(firstList);
         panel.add(secondList);
+
+        //flyweight
+
 
 
         setSize(new Dimension(500, 500));
