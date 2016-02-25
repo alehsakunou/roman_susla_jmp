@@ -1,0 +1,29 @@
+group 'infra'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'war'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile('org.springframework:spring-webmvc:4.2.4.RELEASE')
+    compile('org.springframework:spring-web:4.2.4.RELEASE')
+    compile('org.springframework:spring-core:4.2.4.RELEASE')
+    compile('javax.servlet:jstl:1.2')
+
+    compile project(':00000002')
+    compile project(':00000004')
+}
+war{
+
+    from (project(":00000004").fileTree("src/main/resources")) {
+        into('/WEB-INF/')
+    }
+    archiveName = 'ROOT.war'
+    destinationDir = file('webapps')
+}
